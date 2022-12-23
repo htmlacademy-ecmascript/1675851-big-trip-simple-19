@@ -61,7 +61,7 @@ const models = [
 
 const listView = document.querySelector(String(ListView));
 
-const {log, table} = console;
+const {log} = console;
 
 Promise.all(
   models.map((model) => model.ready())
