@@ -1,7 +1,7 @@
 import EventsPresenter from './presenter/events-presenter';
 import './views/filters-view';
 import './views/sort-view';
-import './views/list-view';
+import ListView from './views/list-view';
 import './views/point-view';
 import './views/new-point-editor-view';
 
@@ -10,8 +10,11 @@ import CollectionModel from './models/collection-model';
 import PointAdapter from './adapters/point-adapter';
 import DestinationAdapter from './adapters/destination-adapter';
 import OfferGroupAdapter from './adapters/offer-group-adapter';
+
 import {FilterType, SortType} from './enums';
 import {filterCallbackMap, sortCallbackMap} from './maps';
+
+import ListPresenter from './presenters/list-presenter';
 
 const bodyElement = document.querySelector('.trip-events');
 const eventsPresenter = new EventsPresenter({eventsContainer: bodyElement});
@@ -19,7 +22,7 @@ const eventsPresenter = new EventsPresenter({eventsContainer: bodyElement});
 eventsPresenter.init();
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic somestring1992';
+const AUTH = 'Basic someuserfromacademy';
 
 /**
  * @type {Store<Point>}
@@ -56,13 +59,15 @@ const models = [
   offerGroupsModel
 ];
 
+const listView = document.querySelector(String(ListView));
+
 const {log, table} = console;
 
 Promise.all(
   models.map((model) => model.ready())
 )
   .then(async () => {
-    table(pointsModel.list());
+    new ListPresenter(listView, models);
   })
   .catch((error) => {
     log(error);
