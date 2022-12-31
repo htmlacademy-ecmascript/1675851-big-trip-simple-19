@@ -10,6 +10,8 @@ export default class ListPresenter extends Presenter {
     super(...arguments);
 
     this.updateView();
+    this.pointsModel.addEventListener('filter', this.handlePointsModelFilter.bind(this));
+    this.pointsModel.addEventListener('sort', this.handlePointsModelSort.bind(this));
   }
 
   updateView() {
@@ -24,7 +26,9 @@ export default class ListPresenter extends Presenter {
   createPointViewState(point) {
     const destination = this.destinationsModel.findById(point.destinationId);
     const offerGroup = this.offerGroupsModel.findById(point.type);
-    const offerViewStates = offerGroup.offers.filter((item) => point.offerIds.includes(item.id)).map((item) => ({...item, price: String(item.price)}));
+    const offerViewStates = offerGroup.offers
+      .filter((offer) => point.offerIds.includes(offer.id))
+      .map((offer) => ({title: offer.title, price: formatNumber(offer.price)}));
 
     return {
       date: formatDate(point.startDate),
@@ -37,5 +41,13 @@ export default class ListPresenter extends Presenter {
       basePrice: formatNumber(point.basePrice),
       offers: offerViewStates
     };
+  }
+
+  handlePointsModelFilter() {
+    this.updateView();
+  }
+
+  handlePointsModelSort() {
+    this.updateView();
   }
 }
