@@ -1,12 +1,11 @@
 import RadioGroupView from './radio-group-view';
 import {html} from '../utils';
-import './sort-view.css';
 
-export default class SortView extends RadioGroupView {
+export default class FilterView extends RadioGroupView {
   constructor() {
     super();
 
-    this.classList.add('trip-sort');
+    this.classList.add('trip-filters');
   }
 
   /**
@@ -14,16 +13,16 @@ export default class SortView extends RadioGroupView {
    */
   createOptionHtml(state) {
     return html`
-      <div class="trip-sort__item  trip-sort__item--${state.value}">
+      <div class="trip-filters__filter">
         <input
-          id="sort-${state.value}"
-          class="trip-sort__input  visually-hidden"
+          id="filter-${state.value}"
+          class="trip-filters__filter-input  visually-hidden"
           type="radio"
-          name="trip-sort"
-          value="sort-${state.value}">
+          name="trip-filter"
+          value="${state.value}">
         <label
-          class="trip-sort__btn"
-          for="sort-${state.value}">
+          class="trip-filters__filter-label"
+          for="filter-${state.value}">
           ${state.title}
         </label>
       </div>
@@ -38,4 +37,4 @@ export default class SortView extends RadioGroupView {
   }
 }
 
-customElements.define(String(SortView), SortView);
+customElements.define(String(FilterView), FilterView);
