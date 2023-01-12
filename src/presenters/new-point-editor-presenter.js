@@ -1,5 +1,5 @@
 import Presenter from './presenter';
-import {pointTitleMap, sortTitleMap} from '../maps';
+import {pointTitleMap} from '../maps';
 import {PointType} from '../enums';
 import {formatNumber} from '../utils';
 
@@ -21,8 +21,6 @@ export default class NewPointEditorPresenter extends Presenter {
 
     this.view.destinationView.setOptions(destinationOptions);
     this.view.destinationView.addEventListener('input', this.handleDestinationViewInput.bind(this));
-
-    this.view.basePriceView.addEventListener('input', this.handleBasePriceViewInput.bind(this));
 
     this.view.addEventListener('submit', this.handleViewSubmit.bind(this));
     this.view.addEventListener('reset', this.handleViewReset.bind(this));
@@ -123,11 +121,5 @@ export default class NewPointEditorPresenter extends Presenter {
     const destination = this.destinationsModel.findBy('name', destinationName);
 
     this.updateDestinationDetailsView(destination);
-  }
-
-  handleBasePriceViewInput() {
-    const price = this.view.basePriceView.getValue();
-
-    console.log(price);
   }
 }
