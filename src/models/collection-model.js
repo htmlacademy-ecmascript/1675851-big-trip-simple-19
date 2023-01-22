@@ -159,7 +159,7 @@ export default class CollectionModel extends Model {
     const detail = this.item(index);
 
     this.#items.splice(index, 1);
-    this.dispatchEvent(new CustomEvent('update', {detail}));
+    this.dispatchEvent(new CustomEvent('delete', {detail}));
 
     return detail;
   }
