@@ -1,3 +1,5 @@
+import './view.css';
+
 export default class View extends HTMLElement {
   constructor() {
     super();
@@ -17,5 +19,15 @@ export default class View extends HTMLElement {
 
   static toString() {
     return this.localName;
+  }
+
+  shake() {
+    this.classList.add('shake');
+
+    this.addEventListener('animationend', () => {
+      this.classList.remove('shake');
+    }, {
+      once: true
+    });
   }
 }
