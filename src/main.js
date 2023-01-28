@@ -30,7 +30,7 @@ import PointEditorPresenter from './presenters/point-editor-presenter';
 import EmptyListPresenter from './presenters/empty-list-presenter';
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
-const AUTH = 'Basic someuser010792';
+const AUTH = 'Basic someauth92';
 
 /**
  * @type {Store<Point>}

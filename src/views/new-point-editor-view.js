@@ -79,6 +79,7 @@ export default class NewPointEditorView extends View {
   }
 
   open() {
+    this.fadeInRight();
     this.listView.prepend(this);
     this.datesView.createCalendars();
 
