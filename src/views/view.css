@@ -4,6 +4,10 @@
   z-index: 10;
 }
 
+.fadein {
+  animation: fadein 1s;
+}
+
 @keyframes shake {
   0%,
   100% {
@@ -23,5 +27,15 @@
   60%,
   80% {
     transform: translateX(5px);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
