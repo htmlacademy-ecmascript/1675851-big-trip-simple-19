@@ -10,7 +10,8 @@ export default class PointEditorView extends NewPointEditorView {
 
     this.awaitDelete(false);
     this.querySelector('header').insertAdjacentHTML('beforeend', this.createCloseButtonHtml());
-    this.querySelector('.event__rollup-btn').addEventListener('click', this.handleClick.bind(this));
+
+    this.addEventListener('click', this.handleClick);
   }
 
   /**
@@ -51,8 +52,13 @@ export default class PointEditorView extends NewPointEditorView {
     this.uiBlockerView.toggle(flag);
   }
 
-  handleClick() {
-    this.close();
+  /**
+   * @param {MouseEvent & {target: Element}} event
+   */
+  handleClick(event) {
+    if (event.target.closest('.event__rollup-btn')) {
+      this.close();
+    }
   }
 }
 

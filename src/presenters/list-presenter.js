@@ -11,6 +11,7 @@ export default class ListPresenter extends Presenter {
 
     this.updateView();
     this.view.addEventListener('edit', this.handleViewEdit.bind(this));
+
     this.pointsModel.addEventListener('filter', this.handlePointsModelFilter.bind(this));
     this.pointsModel.addEventListener('sort', this.handlePointsModelSort.bind(this));
     this.pointsModel.addEventListener('add', this.handlePointsModelAdd.bind(this));
