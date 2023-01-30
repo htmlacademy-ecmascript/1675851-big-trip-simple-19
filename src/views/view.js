@@ -11,14 +11,6 @@ export default class View extends HTMLElement {
     return '';
   }
 
-  static get localName() {
-    return this.name.replace(/(?!^)[A-Z]/g, '-$&').toLowerCase();
-  }
-
-  static toString() {
-    return this.localName;
-  }
-
   /**
    * @param {KeyframeAnimationOptions} [options]
    */
@@ -68,5 +60,13 @@ export default class View extends HTMLElement {
     return this.fadeIn(options, {
       transform: ['translateX(-40px)', 'none']
     });
+  }
+
+  static get localName() {
+    return this.name.replace(/(?!^)[A-Z]/g, '-$&').toLowerCase();
+  }
+
+  static toString() {
+    return this.localName;
   }
 }

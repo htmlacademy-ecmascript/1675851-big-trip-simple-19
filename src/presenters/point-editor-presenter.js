@@ -51,10 +51,6 @@ export default class PointEditorPresenter extends NewPointEditorPresenter {
 
     catch(exception) {
       this.view.shake();
-
-      const {log} = console;
-
-      log(exception);
     }
 
     this.view.awaitDelete(false);
